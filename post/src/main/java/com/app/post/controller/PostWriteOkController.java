@@ -22,6 +22,9 @@ public class PostWriteOkController implements Action {
 		postVO.setPostTitle(req.getParameter("postTitle"));
 		postVO.setPostContent(req.getParameter("postContent"));
 		
+		System.out.println(postVO);
+		
+//		트래잭션
 		postDAO.insert(postVO);
 		Long insertedId = postDAO.selectId();
 		

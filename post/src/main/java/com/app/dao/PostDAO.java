@@ -12,6 +12,7 @@ public class PostDAO {
 	public SqlSession sqlSession;
 	
 	public PostDAO() {
+//		true를 안넘기면 DB에 반영이 안된다.
 		sqlSession = MyBatisConfig.getSqlSessionFactory().openSession(true);
 	}
 	
