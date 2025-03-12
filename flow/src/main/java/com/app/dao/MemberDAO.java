@@ -1,13 +1,9 @@
 package com.app.dao;
 
-import java.util.List;
 import java.util.Optional;
-
 import org.apache.ibatis.session.SqlSession;
-
 import com.app.mybatis.config.MyBatisConfig;
 import com.app.vo.MemberVO;
-import com.app.vo.ProductVO;
 
 public class MemberDAO {
 	public SqlSession sqlSession;
@@ -28,7 +24,7 @@ public class MemberDAO {
 	
 //	멤버 조회
 	public Optional<MemberVO> selectByEmail(String memberEmail){
-		return sqlSession.selectOne("member.selectByEmail", memberEmail);
+		return Optional.ofNullable(sqlSession.selectOne("member.selectByEmail", memberEmail));
 	}
 	
 	

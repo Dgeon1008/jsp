@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.app.Result;
-import com.app.product.controller.OrderWriteOkController;
+import com.app.order.controller.OrderCancelController;
+import com.app.order.controller.OrderListController;
+import com.app.order.controller.OrderWriteOkController;
 import com.app.product.controller.ProductDeleteController;
 import com.app.product.controller.ProductListController;
 import com.app.product.controller.ProductReadController;
@@ -20,8 +22,8 @@ import com.app.product.controller.ProductWriteOkController;
 public class OrderFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	      req.setCharacterEncoding("UTF-8");
-	      resp.setContentType("text/html; charset=utf-8;");
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html; charset=utf-8;");
 		
 //		http://localhost9000/mvc/insert.product
 //		/mvc/insert.product
@@ -34,7 +36,10 @@ public class OrderFrontController extends HttpServlet{
 //			코드의 강제성이 필요하다 interface
 //			result 에 포워드인지 리다이렉트인지 담아준다.
 			result = new OrderWriteOkController().execute(req, resp);
-		}else if(target.equals("join-ok")){
+		}else if(target.equals("list")){
+			result = new OrderListController().execute(req, resp);
+		}else if(target.equals("cancel")){
+			result = new OrderCancelController().execute(req, resp);
 		}else {
 //			전부 404
 		}
