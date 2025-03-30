@@ -34,7 +34,7 @@ public class MemberLoginOkController implements Action {
 		}
 		
 		session.setAttribute("memberEmail", memberEmail);
-		result.setPath(req.getContextPath() + "/list.product");
+		result.setPath("list.product");
 		return result;
 	}
 

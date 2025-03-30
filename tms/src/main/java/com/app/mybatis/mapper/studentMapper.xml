@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="student">
+
+	<insert id="insert" parameterType="StudentVO">
+		INSERT INTO TBL_STUDENT_TASK(ID, STUDENT_NAME, STUDENT_ENG, STUDENT_KOR, STUDENT_MATH)
+		VALUES (SEQ_STUDENT_TASK.NEXTVAL, #{studentName}, #{studentEng}, #{studentKor}, #{studentMath})		
+	</insert>
+	
+	<select id="selectAll" resultType="StudentDTO">
+		SELECT ID, STUDENT_NAME, STUDENT_ENG, STUDENT_KOR, STUDENT_MATH, (STUDENT_ENG + STUDENT_KOR + STUDENT_MATH) AS TOTAL, ROUND((STUDENT_ENG + STUDENT_KOR + STUDENT_MATH) / 3.0, 3) AS AVERAGE				
+		FROM TBL_STUDENT_TASK
+		ORDER BY AVERAGE DESC
+	</select>
+	
+	<select id="select" parameterType="Long" resultType="StudentDTO">
+		SELECT ID, STUDENT_NAME, STUDENT_ENG, STUDENT_KOR, STUDENT_MATH, (STUDENT_ENG + STUDENT_KOR + STUDENT_MATH) AS TOTAL, ROUND((STUDENT_ENG + STUDENT_KOR + STUDENT_MATH) / 3.0, 3) AS AVERAGE
+		FROM TBL_STUDENT_TASK
+		WHERE ID = #{id}
+	</select>
+	
+	<update id="update" parameterType="StudentVO">
+		UPDATE TBL_STUDENT_TASK
+		SET STUDENT_NAME = #{studentName}, STUDENT_MATH = #{studentMath}, STUDENT_ENG = #{studentEng},STUDENT_KOR = #{studentKor}
+		WHERE ID = #{id}
+	</update>
+
+	<delete id="delete" parameterType="Long">
+		DELETE FROM TBL_STUDENT_TASK
+		WHERE ID = #{id}
+	</delete>
+
+
+
+</mapper>

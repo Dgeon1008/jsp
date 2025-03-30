@@ -5,10 +5,10 @@
     <settings>
       <setting name="mapUnderscoreToCamelCase" value="true"/>
    </settings>
-   
-	<typeAliases>
-		<typeAlias type="com.app.vo.ProductVO" alias="ProductVO"/>
-	</typeAliases>
+       
+   <typeAliases>
+      <typeAlias type="" alias=""/>
+   </typeAliases>
    
    <environments default="oracle">
        <environment id="oracle">
@@ -22,13 +22,13 @@
        </environment>
     </environments>
     
-
-    
-    
-    <mappers>
-    	<mapper resource="com/app/mybatis/mapper/productMapper.xml" />
-    </mappers>
-    
-    
+   <mappers>
+      <mapper resource="" />
+   </mappers>    
     
  </configuration>
+ 
+ 
+ 
+ 
+ 
